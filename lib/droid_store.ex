@@ -2,8 +2,8 @@ defmodule DroidStore do
   use GenServer
 
   # Server API
-  def start_link(droids) do
-    GenServer.start_link(__MODULE__, droids)
+  def start_link(droids, name) do
+    GenServer.start_link(__MODULE__, droids, name: name)
   end
 
   def handle_call(:list, _pid, current_droids) do
