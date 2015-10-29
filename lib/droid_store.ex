@@ -35,6 +35,11 @@ defmodule DroidStore do
     :ok
   end
 
+  def handle_call(:crash, _pid, current_droids) do
+    9/0
+    {:reply, current_droids, current_droids}
+  end
+
   # Client API
   def init(droids) do
     IO.puts "initializing store..."
@@ -55,5 +60,9 @@ defmodule DroidStore do
 
   def close(srv_pid, reason) do
     GenServer.cast(srv_pid, {:stop, reason}) 
+  end
+
+  def crash(srv_pid) do
+    GenServer.call(srv_pid, :crash)
   end
 end
