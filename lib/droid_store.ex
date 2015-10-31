@@ -26,7 +26,7 @@ defmodule DroidStore do
   end
 
   def handle_cast({:stop, reason}, droids) do
-    {:stop, reason, droids}
+     {:stop, reason, droids}
   end
 
   def terminate(reason, _droids) do
@@ -42,6 +42,8 @@ defmodule DroidStore do
 
   # Client API
   def init(droids) do
+    # you must have this to exit cleanly
+    Process.flag(:trap_exit, true)
     IO.puts "initializing store..."
     {:ok, droids}
   end

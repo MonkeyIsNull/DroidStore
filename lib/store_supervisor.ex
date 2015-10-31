@@ -14,7 +14,7 @@ defmodule StoreSupervisor do
 
   def start_imperial_link() do
     kids = [worker(DroidStore, [["ig-88"], :coruscant], id: :coruscant_sup),
-            worker(DroidStore, [["azi-3"], :imperial_palace], id: :iimperial_palace_sup)]
+            worker(DroidStore, [["azi-3"], :imperial_palace], id: :imperial_palace_sup)]
     Supervisor.start_link(__MODULE__, kids, name: :imperial_sup)
   end
 
