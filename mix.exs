@@ -2,7 +2,7 @@ defmodule DroidStore.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :droid_store,
+    [app: :droid_store_realm,
      version: "0.0.1",
      elixir: "~> 1.1",
      build_embedded: Mix.env == :prod,
@@ -12,7 +12,8 @@ defmodule DroidStore.Mixfile do
 
   def application do
   [
-     applications: [:logger]
+     applications: [:logger],
+     mod: {Realm, []}
   ]
   end
 
