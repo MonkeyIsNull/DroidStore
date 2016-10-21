@@ -6,16 +6,16 @@ defmodule DroidStore do
     GenServer.start_link(__MODULE__, droids)
   end
 
-  def handle_call(:list, _pid, current_droids) do
+  def handle_call(:list, _from, current_droids) do
     {:reply, current_droids, current_droids}
   end
 
-  def handle_call({:add, droid}, _pid, current_droids) do
+  def handle_call({:add, droid}, _from, current_droids) do
     droids = [ droid | current_droids ]
     {:reply, droids, droids}
   end
 
-  def handle_call({:remove, droid}, _pid, current_droids) do
+  def handle_call({:remove, droid}, _from, current_droids) do
     case droid in current_droids do
       true ->
          droids = List.delete(current_droids, droid)
